@@ -1,0 +1,27 @@
+﻿
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('images/641461.jpg');
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+
+
+
+h2 {
+    
+    text-align: center;
+    color: rgb(255,217,3);
+}
+
+.lblemail, .lblpass {
+    font-weight: bold;
+    color: #fff;
+}
+
+.txtemail, .txtpass, .btnsubmit {
+    width: 100px;
+    margin-bottom: 20px;
+}
