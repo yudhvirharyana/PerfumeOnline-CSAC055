@@ -13,7 +13,13 @@ namespace applliedProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string query = "select * from brandsListbrand";
+            if (!IsPostBack)
+                bindDataToGridView();
+        }
+
+        private void bindDataToGridView()
+        {
+            string query = "select * from [brandsListbrand]";
             SqlConnection con = new SqlConnection(cnstring);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = query;
@@ -26,25 +32,21 @@ namespace applliedProject
             GridView1.DataBind();
             con.Close();
         }
+
         public string cnstring = "Data Source=desktop-cq119gr;Initial Catalog=perfumeonline;Integrated Security=True";
         protected void Button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(cnstring);
             con.Open();
-            if (con.State == System.Data.ConnectionState.Open)
-            {
-                /**string sql = "UPDATE main SET s_name='" + TextBox1.Text + "',inst_code='" + DropDownList1.SelectedItem +
-                    "',ms_oms='" + Label7.Text + "',elligiblity='" + Label12.Text + "',Board='"
-                    + DropDownList5.SelectedItem + "',percentage='" + TextBox4.Text + "' WHERE elg_id = '" +
-                    DropDownList4.SelectedItem + "'"**/
-                string updatee = "update brandsListbrand set brandId= '" + TextBox1.Text.ToString()
-                    + "', brandName = '" + TextBox2.Text.ToString()
-                    + "' WHERE brandId='"+ TextBox1.Text.ToString() +"';";
-                SqlCommand cmd = new SqlCommand(updatee, con);
-                cmd.ExecuteNonQuery();
-               // Response.Write("updated successfully");
-
-            }
+            
+            string updatee = "update [brandsListbrand] set brandId= '" + TextBox1.Text.ToString()
+                + "', brandName = '" + TextBox2.Text.ToString()
+                + "' WHERE brandId='"+ HiddenField1.Value.ToString() +"';";
+            SqlCommand cmd = new SqlCommand(updatee, con);
+            cmd.ExecuteNonQuery();
+            bindDataToGridView();
+            TextBox1.Text = "";
+            TextBox2.Text = "";
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -54,12 +56,41 @@ namespace applliedProject
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(cnstring);
+            // Ravneet (Info): Delete imagebutton will directly delete the row. No need for another button
+
+            /*SqlConnection con = new SqlConnection(cnstring);
             con.Open();
-            string delete = "delete from  brandsListbrand where brandId = '" + TextBox2.Text.ToString() + "'";
+            string delete = "delete from [brandsListbrand] where brandId = '" + TextBox1.Text.ToString() + "'";
             SqlCommand cmd = new SqlCommand(delete, con);
             cmd.ExecuteNonQuery();
             Response.Write("deleted successfully");
+            bindDataToGridView();*/
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteItem")
+            {
+                int rowID = Convert.ToInt32(e.CommandArgument);
+                TextBox1.Text = GridView1.Rows[rowID].Cells[0].Text;
+                TextBox2.Text = GridView1.Rows[rowID].Cells[1].Text;
+
+                SqlConnection con = new SqlConnection(cnstring);
+                con.Open();
+                string delete = "delete from [brandsListbrand] where brandId = '" + TextBox1.Text.ToString() + "'";
+                SqlCommand cmd = new SqlCommand(delete, con);
+                cmd.ExecuteNonQuery();
+                Response.Write("deleted successfully");
+                bindDataToGridView();
+            }
+
+            if(e.CommandName == "EditItem")
+            {
+                int rowID = Convert.ToInt32(e.CommandArgument);
+                TextBox1.Text = GridView1.Rows[rowID].Cells[0].Text;
+                TextBox2.Text = GridView1.Rows[rowID].Cells[1].Text;
+                HiddenField1.Value = TextBox1.Text;
+            }
         }
     }
 }
