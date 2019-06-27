@@ -12,6 +12,7 @@ namespace applliedProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+      
             string query = "select * from brandsListbrand";
             SqlConnection con = new SqlConnection(cnstring1);
             SqlCommand cmd = new SqlCommand();
@@ -39,8 +40,21 @@ namespace applliedProject
                 SqlCommand cmd = new SqlCommand(a, con);
 
                 cmd.ExecuteNonQuery();
-
-                Response.Write("Data Entered");
+                TextBox1.Text = "";
+                TextBox2.Text = "";
+                string query = "select * from brandsListbrand";
+                SqlConnection conn = new SqlConnection(cnstring1);
+                SqlCommand cmdd = new SqlCommand();
+                cmdd.CommandText = query;
+                cmdd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmdd;
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                GridView2.DataSource = ds;
+                GridView2.DataBind();
+                conn.Close();
+                // Response.Write("Data Entered");
             }
         }
 
