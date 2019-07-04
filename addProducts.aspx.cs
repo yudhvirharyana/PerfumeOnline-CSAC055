@@ -25,7 +25,7 @@ namespace applliedProject
             GridView1.DataBind();
             con.Close();
         }
-        public string cnstring1 = "Data Source=desktop-cq119gr;Initial Catalog=perfumeonline;Integrated Security=True";
+        public string cnstring1 = "Data Source=DESKTOP-S8A3GMM\\SANDEEPSQL;Initial Catalog=perfumeOnline;Integrated Security=True";
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/homeProducts.aspx");
@@ -43,10 +43,26 @@ namespace applliedProject
                     "','" + DropDownList1.Text.ToString() + "')";
 
                 SqlCommand cmd = new SqlCommand(a, con);
-
                 cmd.ExecuteNonQuery();
-
-                Response.Write("Data Entered");
+                TextBox1.Text = "";
+                TextBox2.Text = "";
+                TextBox3.Text = "";
+                TextBox4.Text = "";
+                DropDownList1.Text = "";
+                //  refresh gridview after data insert
+                string query = "select * from productsList";
+                SqlConnection conn = new SqlConnection(cnstring1);
+                SqlCommand cmdd = new SqlCommand();
+                cmdd.CommandText = query;
+                cmdd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmdd;
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+                conn.Close();
+                //  Response.Write("Data Entered");
             }
         }
     }

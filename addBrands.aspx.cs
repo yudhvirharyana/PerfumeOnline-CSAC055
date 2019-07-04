@@ -26,7 +26,7 @@ namespace applliedProject
             GridView2 .DataBind();
             con.Close();
         }
-        public string cnstring1 = "Data Source=desktop-cq119gr;Initial Catalog=perfumeonline;Integrated Security=True";
+        public string cnstring1 = "Data Source=DESKTOP-S8A3GMM\\SANDEEPSQL;Initial Catalog=perfumeOnline;Integrated Security=True";
 
         protected void Button1_Click(object sender, EventArgs e)
         {

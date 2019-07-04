@@ -19,10 +19,10 @@
             width: 100%;
         }
         .auto-style4 {
-            width: 623px;
+            width: 574px;
         }
         .auto-style5 {
-            width: 867px;
+            width: 716px;
         }
         .auto-style6 {
             font-weight: bold;
@@ -50,11 +50,11 @@
             font-size: x-large;
         }
         .auto-style10 {
-            width: 867px;
+            width: 716px;
             text-align: center;
         }
         .auto-style11 {
-            width: 623px;
+            width: 574px;
             text-align: center;
         }
     </style>
@@ -68,9 +68,8 @@
 
 	<div class="bgimage">
 		<div class="menu">
-			
-			<div class="leftmenu">
-				<h2> PERFUME ONLINE </h2>
+            <div class="leftmenu">
+                <h2> PERFUME ONLINE </h2>
 			</div>
 
 			<div class="rightmenu">
@@ -93,11 +92,14 @@
                     <td class="auto-style5">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>
+                    <td class="auto-style11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <strong>
                         <asp:Label ID="Label2" runat="server" CssClass="auto-style9" Text="Brand Id"></asp:Label>
                         </strong>&nbsp;</td>
                     <td class="auto-style10">
                         <asp:TextBox ID="TextBox1" runat="server" Height="37px" Width="181px" Font-Size="Large"></asp:TextBox>
+                        <strong>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="   Brand Id Can't be Empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </strong>
                     </td>
                 </tr>
                 <tr>
@@ -107,10 +109,14 @@
                 </tr>
                 <tr>
                     <td class="auto-style11"> <strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="Label3" runat="server" CssClass="auto-style9" Text="Brand Name"></asp:Label>
                         </strong></td>
                     <td class="auto-style10">
                         <asp:TextBox ID="TextBox2" runat="server" Height="38px" Width="178px" Font-Size="Large"></asp:TextBox>
+                        <strong>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Brand Name Can't Be Empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </strong>
                     </td>
                 </tr>
                 <tr>
@@ -121,7 +127,7 @@
                     <td class="auto-style7" colspan="2"><strong>
                         <asp:Button ID="Button1" runat="server" CssClass="auto-style6" Height="43px" OnClick="Button1_Click" Text="Add" Width="149px" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="Button2" runat="server" CssClass="auto-style6" Height="44px" OnClick="Button2_Click" Text="Cancel" Width="136px" />
+                        <asp:Button ID="Button2" runat="server" CssClass="auto-style6" Height="44px" OnClick="Button2_Click" Text="Cancel" Width="136px" CausesValidation="False" PostBackUrl="~/homeBrands.aspx" ValidateRequestMode="Disabled" />
                         </strong></td>
                 </tr>
                 <tr>
@@ -130,16 +136,16 @@
                 <tr>
                     <td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div class="auto-style7">
-                        <asp:GridView ID="GridView2" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" Height="246px" HorizontalAlign="Center" PageSize="20" Width="403px" CssClass="auto-style9">
-                            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-                            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
-                            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
-                            <RowStyle BackColor="White" ForeColor="#330099" />
-                            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
-                            <SortedAscendingCellStyle BackColor="#FEFCEB" />
-                            <SortedAscendingHeaderStyle BackColor="#AF0101" />
-                            <SortedDescendingCellStyle BackColor="#F6F0C0" />
-                            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                        <asp:GridView ID="GridView2" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" Height="246px" HorizontalAlign="Center" PageSize="20" Width="403px" CssClass="auto-style9" CellSpacing="2" ForeColor="Black">
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                            <RowStyle BackColor="White" />
+                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
                         </asp:GridView>
                         </div>
                         &nbsp;</td>
