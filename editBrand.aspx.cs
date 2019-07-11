@@ -33,7 +33,7 @@ namespace applliedProject
             con.Close();
         }
 
-        public string cnstring = "Data Source=desktop-cq119gr;Initial Catalog=perfumeonline;Integrated Security=True";
+        public string cnstring = "Data Source=DESKTOP-S8A3GMM\\SANDEEPSQL;Initial Catalog=perfumeOnline;Integrated Security=True";
         protected void Button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(cnstring);
@@ -56,7 +56,7 @@ namespace applliedProject
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            // Ravneet (Info): Delete imagebutton will directly delete the row. No need for another button
+          
 
             /*SqlConnection con = new SqlConnection(cnstring);
             con.Open();
@@ -91,6 +91,16 @@ namespace applliedProject
                 TextBox2.Text = GridView1.Rows[rowID].Cells[1].Text;
                 HiddenField1.Value = TextBox1.Text;
             }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void HiddenField1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

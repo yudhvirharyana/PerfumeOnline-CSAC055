@@ -55,6 +55,9 @@
             color: #FFFFFF;
             text-decoration: underline;
         }
+        .auto-style11 {
+            font-size: large;
+        }
     </style>
 	<link rel="stylesheet" type="text/css" href="hnew.css"/>
 		 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet'/>
@@ -100,7 +103,7 @@
                         </strong>&nbsp;</td>
                     <td class="auto-style8">
                         <asp:TextBox ID="TextBox1" runat="server" Height="37px" Width="181px" Font-Size="Large" ></asp:TextBox>
-                        <asp:HiddenField ID="HiddenField1" runat="server" />
+                        <asp:HiddenField ID="HiddenField1" runat="server" OnValueChanged="HiddenField1_ValueChanged" />
                     </td>
                 </tr>
                 <tr>
@@ -133,7 +136,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" Height="255px" Width="435px" HorizontalAlign="Center" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+                        <asp:GridView ID="GridView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" Height="255px" Width="435px" HorizontalAlign="Center" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CellSpacing="2" CssClass="auto-style11" ForeColor="Black">
                             <Columns>
                                 <asp:BoundField DataField="brandId" HeaderText="Brand ID" SortExpression="brandId" />
                                 <asp:BoundField DataField="brandName" HeaderText="Brand Name" SortExpression="brandName" />
@@ -156,15 +159,15 @@
                                 </asp:TemplateField>
                                 
                             </Columns>
-                            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-                            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
-                            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
-                            <RowStyle BackColor="White" ForeColor="#330099" />
-                            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
-                            <SortedAscendingCellStyle BackColor="#FEFCEB" />
-                            <SortedAscendingHeaderStyle BackColor="#AF0101" />
-                            <SortedDescendingCellStyle BackColor="#F6F0C0" />
-                            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                            <RowStyle BackColor="White" />
+                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
                         </asp:GridView>
 &nbsp;&nbsp;</td>
                 </tr>
