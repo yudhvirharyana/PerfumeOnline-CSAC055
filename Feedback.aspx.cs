@@ -18,22 +18,12 @@ namespace applliedProject
         {
 
         }
-        public string cnstring = "Data Source=desktop-cq119gr;Initial Catalog=perfumeonline;Integrated Security=True";
+
+        public string cnstring = "Data Source=desktop-2s0q0js\\yudhvirsql;Initial Catalog=perfumeonline;Integrated Security=True";
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
     
-            SqlConnection con = new SqlConnection(cnstring);
-            con.Open();
-            if (con.State == System.Data.ConnectionState.Open);
-            string a = "insert into signup(username,password)values('" + txtEmailID.Text.ToString() +
-                   "','" + TextBox1.Text.ToString() + " ')";
-            SqlCommand cmd = new SqlCommand(a, con);
-            cmd.ExecuteNonQuery();
-            // ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert(' hhhh ');", true); //popup not working
-          //  MessageBox.Show(this, "Registration Sucessfull");// just implememnt
-           // 
-            con.Close();
             bool isCaptchaValid = false;
             if (Session["CaptchaText"] != null && Session["CaptchaText"].ToString() == txtCaptchaText.Text)
             {
@@ -41,6 +31,17 @@ namespace applliedProject
             }
             if (isCaptchaValid)
             {
+                SqlConnection con = new SqlConnection(cnstring);
+                con.Open();
+                if (con.State == System.Data.ConnectionState.Open) 
+                { 
+                    string a = "insert into signup(username,password)values('" + txtEmailID.Text.ToString() +
+                             "','" + TextBox1.Text.ToString() + " ')";
+                        SqlCommand cmd = new SqlCommand(a, con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                
                 lblMessage.Text = "Captcha Validation Success";
                 lblMessage.ForeColor = Color.Green;
                 Response.Redirect("~/WebForm1.aspx");
