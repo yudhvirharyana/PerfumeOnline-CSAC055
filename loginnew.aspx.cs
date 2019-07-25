@@ -28,7 +28,7 @@ namespace applliedProject
         {
 
         }
-        public string cnstring = "Data Source=desktop-cq119gr;Initial Catalog=perfumeonline;Integrated Security=True";
+        public string cnstring = "Data Source=desktop-2s0q0js\\yudhvirsql;Initial Catalog=perfumeonline;Integrated Security=True";
 
         protected void Unnamed2_TextChanged(object sender, EventArgs e)
         {
@@ -40,18 +40,41 @@ namespace applliedProject
         {
             SqlConnection con = new SqlConnection(cnstring);
             con.Open();
-            if (con.State == System.Data.ConnectionState.Open) ;
+            if (con.State == System.Data.ConnectionState.Open)
+            {
+                ;
+            }
+
             SqlCommand o = new SqlCommand("select * from signup where username='" + textbox1.Text + "' And password ='" + textbox2.Text + "';", con);
             //con.Open();
             SqlDataReader r = o.ExecuteReader();
-            if(r.Read())
+            
+                if(r.Read())
+                {
+                    Response.Redirect("~/homenew.aspx");
+                    
+                }
+                else
+                {
+                if (textbox1.Text.Length == 0 || textbox2.Text.Length == 0)
+                {
+                    MessageBox.Show(this, "Please enter username and Password");
+                }
+                else
+                {
+                    MessageBox.Show(this, "Username and Password Is Not Correct");
+
+                }
+            }
+            /**if(r.Read())
             {
                 Response.Redirect("~/home.aspx");
             }
             else
-            {
+            {        actuall code
+               
                 MessageBox.Show(this, "Username and Password Is Not Correct");
-            }
+            }*/
 
             //string query1 = "select * from Login where username='" + textbox1.Text + "' and password='" + textbox2.Text + "'";
             //SqlCommand cmd = new SqlCommand(query1, con);
@@ -84,5 +107,17 @@ namespace applliedProject
         {
             Response.Redirect("~/Feedback.aspx");
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(cnstring);
+            con.Open();
+            string delete = "delete from  signup where username = '" + TextBox3.Text.ToString() + "'";
+            SqlCommand cmd = new SqlCommand(delete, con);
+            cmd.ExecuteNonQuery();
+            Response.Write("deleted successfully");
+        }
+
+        
     }
 }
