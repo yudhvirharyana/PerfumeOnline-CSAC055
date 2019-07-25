@@ -33,7 +33,7 @@ namespace applliedProject
             con.Close();
         }
 
-        public string cnstring = "Data Source=desktop-cq119gr;Initial Catalog=perfumeonline;Integrated Security=True";
+        public string cnstring = "Data Source=desktop-2s0q0js\\yudhvirsql;Initial Catalog=perfumeonline;Integrated Security=True";
         protected void Button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(cnstring);
